@@ -47,8 +47,8 @@ class OregonImport:
         """
         assert self.import_data_dask_flag, "Please run _import_data_dask before _oregon_only."
         self.oregon_data_dict = {}
-        for keyval in tqdm(self.data_dict.keys(), desc='table management'):
-            table = self.data_dict[keyval]
+        for keyval in tqdm(self.raw_data_dict.keys(), desc='table management'):
+            table = self.raw_data_dict[keyval]
             table = table.loc[(table['fips']>41000) & (table['fips']<42000)].copy()
             table = table.compute()
             self.oregon_data_dict[keyval] = table
@@ -62,6 +62,6 @@ class OregonImport:
         """
 
         self._import_data_dask()
-        oregon_data_dict = self._oregon_only()
+        self._oregon_only()
 
-        return oregon_data_dict
+        return self.oregon_data_dict
