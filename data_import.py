@@ -56,12 +56,28 @@ class OregonImport:
         self.oregon_only_flag = True
         return None
     
+    def save_new_data(self):
+        """
+        This function saves the new DataFrames as csvs"""
+        assert self.oregon_only_flag, "Please run oregon_only before save_new_data."
+
+        os.makedirs('./processed', exist_ok=True)
+        print('saving oregon data into new csvs')
+
+        for keyval in tqdm(self.oregon_data_dict.keys(), desc = 'table saving'):
+            table = self.oregon_data_dict[keyval]
+            table.to_csv(f'/processed/oregon_{table}.csv')
+        print('new oregon data saved into csvs.')
+        return None
+
+
     def oregon_data_runner(self):
         """
         This function runs the other functions of the class in the correct order.
         """
 
         self._import_data_dask()
+        self.save_new_data()
         self._oregon_only()
 
         return self.oregon_data_dict

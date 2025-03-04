@@ -4,7 +4,12 @@ Data from Kaggle - [Predict Droughts using Weather & Soil Data](https://www.kagg
 
 Note: for size issues, the raw data from Kaggle will not be copied to this repo. Latest download of data from above Kaggle link 4 March 2025.
 
+#### Background / Motivation
+
+Documentation on scores by US Drought Monitoring can be found [here](https://droughtmonitor.unl.edu/About/AbouttheData/DSCI.aspx).
+
 #### Use
+* Verify you have the packages listed in requirements.txt
 * For importing data to python, use data_import.py. Example code for use:
 ```
 from data_import import *
