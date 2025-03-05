@@ -31,7 +31,7 @@ oregon_data_dict = oregon_import()
 (fill in information when more is done)
 
 #### Preprocessing of Data
-* selecting data for Oregon counties based on 'fips' column.
+* selecting data for Oregon counties based on `fips` column.
 
 
 #### Data Visualizations

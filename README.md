@@ -19,6 +19,8 @@ data_dict = data_importing.oregon_data_runner()
 ```
 * For importing processed data to python, also use `data_import.py`. Example code for use:
 ```
+from data_import import *
+
 oregon_data_dict = oregon_import()
 ```
 * For more details see `detailed_docs.md`.

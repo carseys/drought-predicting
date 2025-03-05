@@ -7,7 +7,20 @@ from tqdm import tqdm
 
 
 class OregonProcess:
-    
+    """
+    This process imports raw data from ./data directory using dask, selects Oregon data, and both saves Oregon Data in processed data folder and returns Oregon Data in a dictionary.
+
+    Functions
+    ---------
+    _import_data_dask
+        imports raw data from ./data directory using dask.
+    _oregon_only
+        selects Oregon data based on county codes in 'fips' column and converts this data to pandas DataFrame
+    save_new_data
+        saves Oregon data as csv in ./processed_data directory
+    oregon_data_runner
+        runs all the above functions, in the above order
+    """
     def __init__(self):
         self.import_data_dask_flag = False
         self.oregon_only_flag = False        
