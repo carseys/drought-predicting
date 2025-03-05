@@ -3,3 +3,6 @@ numpy
 tqdm
 dask
 glob
+matplotlib
+seaborn
+tensorflow
