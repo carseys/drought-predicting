@@ -123,7 +123,7 @@ def oregon_import():
     parse_dates = ['date']
 
     for data in tqdm(data_paths, desc="file import"):
-        name = os.path.basename(data).split('.')[0]
+        name = os.path.basename(data).split('.')[0].split('_')[1:]
         oregon_data_dict[name] = pd.read_csv(data, dtype = dtypes, parse_dates=parse_dates)
 
     return oregon_data_dict
