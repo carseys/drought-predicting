@@ -5,7 +5,7 @@
 * Verify you have the packages listed in requirements.txt
 * See sections below for specific notes on use.
 
-###### Importing Raw Data to Python
+##### Importing Data to Python
 
 For importing raw data to python, use data_import.py. Note that for this, data should be in a directory named `'./data'` with each table in a subdirectory within `'./data'`.
 
@@ -21,13 +21,17 @@ This will import the csvs from the `'./data.'` directory (not here in repo) and 
 
 The hardcoding for Oregon is based on Oregon county codes starting with '41'. This can be adjusted for other states.
 
-For importing processed data to python, also use data_import.py. This is suitable for use after the above `OregonProcess()` has been used. Example code for use:
+For importing processed (well not very processed, just a subset of raw data that is manageable in pandas and specific to Oregon) data to python, also use data_import.py. This is suitable for use after the above `OregonProcess()` has been used. Example code for use:
 ```
 oregon_data_dict = oregon_import()
 ```
 
-###### Use of Model
+##### Use of Model
 
+(fill in information when more is done)
 
 #### Preprocessing of Data
 * selecting data for Oregon counties based on 'fips' column.
+
+#### Data Visualizations
+* See `data_exploration.ipynb` for various visualizations of raw data.
