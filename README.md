@@ -23,4 +23,4 @@ from data_import import *
 
 oregon_data_dict = oregon_import()
 ```
-* For more details see `detailed_docs.md`.
+* For more details see [detailed_docs.md](https://github.com/carseys/drought-predicting/blob/main/detailed_docs.md).
