@@ -28,13 +28,11 @@ from data_import import *
 oregon_data_dict = oregon_import()
 ```
 
-##### Use of Model
-
-(fill in information when more is done)
+##### Modeling
+* Single County LSTM - modeling data over time by county
 
 #### Preprocessing of Data
 * selecting data for Oregon counties based on `fips` column.
-
 
 #### Data Visualizations
 * See `data_exploration.ipynb` for various visualizations.
