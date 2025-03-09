@@ -141,3 +141,29 @@ def oregon_import():
         oregon_data_dict[tablename] = pd.read_csv(data, dtype = dtypes, parse_dates=parse_dates)
 
     return oregon_data_dict
+
+def add_yearly_periodicity(data_dict: dict):
+    """
+    Adds year sin and year cos values to consider yearly periodicity of values.
+
+    Parameters
+    ----------
+    'data_dict' : dict
+        dict of pandas DataFrames
+    
+    Returns
+    -------
+    None
+    """
+    day = 24*60*60
+    year = (365.2425)*day
+
+    for table_name in data_dict.keys():
+        table = data_dict[table_name]
+        timestamp = table['date'].map(pd.Timestamp.timestamp)
+        table['Year sin'] = np.sin(timestamp * (2 * np.pi / year))
+        table['Year cos'] = np.cos(timestamp * (2 * np.pi / year))
+
+        data_dict[table_name] = table
+
+    return None
