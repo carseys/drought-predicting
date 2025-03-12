@@ -95,7 +95,7 @@ class OregonProcess:
 
 def oregon_import():
     """
-    Imports Oregon tables from processed data folder. Also sets variable types for columns of resulting DataFrames.
+    Imports Oregon tables from processed data folder. Also sets variable types for columns of resulting DataFrames. Datatypes are float32 to satisfy pytorch.
 
     Parameters
     ----------
