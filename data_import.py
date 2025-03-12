@@ -161,8 +161,8 @@ def add_yearly_periodicity(data_dict: dict):
     for table_name in data_dict.keys():
         table = data_dict[table_name]
         timestamp = table['date'].map(pd.Timestamp.timestamp)
-        table['Year sin'] = np.sin(timestamp * (2 * np.pi / year))
-        table['Year cos'] = np.cos(timestamp * (2 * np.pi / year))
+        table['Year sin'] = np.sin(timestamp * (2 * np.pi / year)).astype(np.float32)
+        table['Year cos'] = np.cos(timestamp * (2 * np.pi / year)).astype(np.float32)
 
         data_dict[table_name] = table
 
