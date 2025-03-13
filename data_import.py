@@ -100,11 +100,12 @@ def oregon_import(torch: bool = True):
     Parameters
     ----------
     'torch' : bool
-        if 'True' then datatypes will be set to float32. Else float64
+        if 'True' then datatypes will be set to float32. Else float64.
 
     Returns
     -------
-    None
+    'oregon_data_dict' : dict
+        dictionary with train, test, and validation pd.DataFrames of data.
     """
     input_dir = os.path.abspath("processed_data\\*")
 
@@ -179,7 +180,7 @@ def add_yearly_periodicity(data_dict: dict, torch: bool = True):
     'data_dict' : dict
         dict of pandas DataFrames
     'torch' : bool
-        if 'True' then datatypes will be set to float32. Else float64
+        if 'True' then datatypes will be set to float32. Else float64.
     
     Returns
     -------
