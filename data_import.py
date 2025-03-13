@@ -93,13 +93,14 @@ class OregonProcess:
 
         return self.oregon_data_dict
 
-def oregon_import():
+def oregon_import(torch: bool = True):
     """
     Imports Oregon tables from processed data folder. Also sets variable types for columns of resulting DataFrames. Datatypes are float32 to satisfy pytorch.
 
     Parameters
     ----------
-    None
+    'torch' : bool
+        if 'True' then datatypes will be set to float32. Else float64
 
     Returns
     -------
@@ -110,29 +111,54 @@ def oregon_import():
     data_paths = glob.glob(input_dir, recursive=True)
 
     oregon_data_dict = {}
-    dtypes = {
-        'fips': int,
-        'date': str,
-        'PRECTOT': np.float32,
-        'PS': np.float32,
-        'QV2M': np.float32,
-        'T2M': np.float32,
-        'T2MDEW': np.float32,
-        'T2MWET': np.float32,
-        'T2M_MAX': np.float32,
-        'T2M_MIN': np.float32,
-        'T2M_RANGE': np.float32,
-        'TS': np.float32,
-        'WS10M': np.float32,
-        'WS10M_MAX': np.float32,
-        'WS10M_MIN': np.float32,
-        'WS10M_RANGE': np.float32,
-        'WS50M': np.float32,
-        'WS50M_MAX': np.float32,
-        'WS50M_MIN': np.float32,
-        'WS50M_RANGE': np.float32,
-        'score': np.float32
-    }
+    if torch == True:
+        dtypes = {
+            'fips': int,
+            'date': str,
+            'PRECTOT': np.float32,
+            'PS': np.float32,
+            'QV2M': np.float32,
+            'T2M': np.float32,
+            'T2MDEW': np.float32,
+            'T2MWET': np.float32,
+            'T2M_MAX': np.float32,
+            'T2M_MIN': np.float32,
+            'T2M_RANGE': np.float32,
+            'TS': np.float32,
+            'WS10M': np.float32,
+            'WS10M_MAX': np.float32,
+            'WS10M_MIN': np.float32,
+            'WS10M_RANGE': np.float32,
+            'WS50M': np.float32,
+            'WS50M_MAX': np.float32,
+            'WS50M_MIN': np.float32,
+            'WS50M_RANGE': np.float32,
+            'score': np.float32
+        }
+    else:
+        dtypes = {
+            'fips': int,
+            'date': str,
+            'PRECTOT': float,
+            'PS': float,
+            'QV2M': float,
+            'T2M': float,
+            'T2MDEW': float,
+            'T2MWET': float,
+            'T2M_MAX': float,
+            'T2M_MIN': float,
+            'T2M_RANGE': float,
+            'TS': float,
+            'WS10M': float,
+            'WS10M_MAX': float,
+            'WS10M_MIN': float,
+            'WS10M_RANGE': float,
+            'WS50M': float,
+            'WS50M_MAX': float,
+            'WS50M_MIN': float,
+            'WS50M_RANGE': float,
+            'score': float
+        }
     parse_dates = ['date']
 
     for data in tqdm(data_paths, desc="file import"):
@@ -142,7 +168,9 @@ def oregon_import():
 
     return oregon_data_dict
 
-def add_yearly_periodicity(data_dict: dict):
+
+
+def add_yearly_periodicity(data_dict: dict, torch: bool = True):
     """
     Adds year sin and year cos values to consider yearly periodicity of values.
 
@@ -150,6 +178,8 @@ def add_yearly_periodicity(data_dict: dict):
     ----------
     'data_dict' : dict
         dict of pandas DataFrames
+    'torch' : bool
+        if 'True' then datatypes will be set to float32. Else float64
     
     Returns
     -------
@@ -161,8 +191,12 @@ def add_yearly_periodicity(data_dict: dict):
     for table_name in data_dict.keys():
         table = data_dict[table_name]
         timestamp = table['date'].map(pd.Timestamp.timestamp)
-        table['Year sin'] = np.sin(timestamp * (2 * np.pi / year)).astype(np.float32)
-        table['Year cos'] = np.cos(timestamp * (2 * np.pi / year)).astype(np.float32)
+        if torch == True:
+            table['Year sin'] = np.sin(timestamp * (2 * np.pi / year)).astype(np.float32)
+            table['Year cos'] = np.cos(timestamp * (2 * np.pi / year)).astype(np.float32)
+        else:
+            table['Year sin'] = np.sin(timestamp * (2 * np.pi / year))
+            table['Year cos'] = np.cos(timestamp * (2 * np.pi / year))
 
         data_dict[table_name] = table
 
