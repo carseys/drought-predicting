@@ -93,13 +93,13 @@ class OregonProcess:
 
         return self.oregon_data_dict
 
-def oregon_import(torch: bool = True):
+def oregon_import(float_32: bool = True):
     """
     Imports Oregon tables from processed data folder. Also sets variable types for columns of resulting DataFrames. Datatypes are float32 to satisfy pytorch.
 
     Parameters
     ----------
-    'torch' : bool
+    'float_32' : bool
         if 'True' then datatypes will be set to float32. Else float64.
 
     Returns
@@ -112,7 +112,7 @@ def oregon_import(torch: bool = True):
     data_paths = glob.glob(input_dir, recursive=True)
 
     oregon_data_dict = {}
-    if torch == True:
+    if float_32 == True:
         dtypes = {
             'fips': int,
             'date': str,
@@ -171,7 +171,7 @@ def oregon_import(torch: bool = True):
 
 
 
-def add_yearly_periodicity(data_dict: dict, torch: bool = True):
+def add_yearly_periodicity(data_dict: dict, float_32: bool = True):
     """
     Adds year sin and year cos values to consider yearly periodicity of values.
 
@@ -179,7 +179,7 @@ def add_yearly_periodicity(data_dict: dict, torch: bool = True):
     ----------
     'data_dict' : dict
         dict of pandas DataFrames
-    'torch' : bool
+    'float_32' : bool
         if 'True' then datatypes will be set to float32. Else float64.
     
     Returns
@@ -192,7 +192,7 @@ def add_yearly_periodicity(data_dict: dict, torch: bool = True):
     for table_name in data_dict.keys():
         table = data_dict[table_name]
         timestamp = table['date'].map(pd.Timestamp.timestamp)
-        if torch == True:
+        if float_32 == True:
             table['Year sin'] = np.sin(timestamp * (2 * np.pi / year)).astype(np.float32)
             table['Year cos'] = np.cos(timestamp * (2 * np.pi / year)).astype(np.float32)
         else:
