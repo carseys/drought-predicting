@@ -9,7 +9,7 @@ Note: for size issues, the raw data from Kaggle will not be copied to this repo.
 * Some visualizations adapted from sample code in this [tutorial on time series forcasting](https://www.tensorflow.org/tutorials/structured_data/time_series#data_windowing).
 
 #### Use
-* Verify you have the packages listed in requirements.txt
+* Verify you have the packages listed in `requirements.txt`
 * For importing raw data to python, use `data_import.py`. Example code for use:
 ```
 from data_import import *
