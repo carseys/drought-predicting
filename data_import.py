@@ -93,6 +93,7 @@ class OregonProcess:
 
         return self.oregon_data_dict
 
+
 def oregon_import(float_32: bool = True):
     """
     Imports Oregon tables from processed data folder. Also sets variable types for columns of resulting DataFrames. Datatypes are float32 to satisfy pytorch.
@@ -169,7 +170,39 @@ def oregon_import(float_32: bool = True):
 
     return oregon_data_dict
 
+def single_oregon_county(data_dict: dict, county_code: int):
+    """
+    Selects data from county listed in county_code.
+    
+    Parameters
+    ----------
+    'data_dict' : dict
+    'county_code' : int
+    """
+    single_county_dict = {}
 
+    for dict_key in tqdm(data_dict.keys(), desc='processing dfs'):
+        df = data_dict[dict_key].copy()
+        df = df[df['fips'] == county_code]
+        df.drop(columns=['fips'], inplace = True)
+
+        df.reset_index(inplace = True, drop = True)
+        first_score = df.query('score == score').index[0]
+
+        if first_score < 7:
+            df = df.iloc[first_score+1:,:]
+        
+        final_score = df.query('score == score').index[-1]
+        last_ind = df.last_valid_index()
+
+        if final_score != last_ind:
+            df = df.iloc[:final_score-last_ind,:]
+
+        df.reset_index(inplace = True, drop = True)
+
+        single_county_dict[dict_key] = df
+
+    return single_county_dict
 
 def add_yearly_periodicity(data_dict: dict, float_32: bool = True):
     """
