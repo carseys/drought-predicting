@@ -54,11 +54,15 @@ def train_test_split_default(df: pd.DataFrame, train_size: float = 0.8):
     ----------
     'df' : pd.DataFrame
         contains the data to be split. Should just be an import of csv from .\processed_data, with date as index.
+    'train_size' : float
 
     Returns
     -------
     'split_data_dict' a dict containing the shuffled split data, grouped by county.
     """
+    assert train_size < 1, 'Train size needs to be less than 1.'
+    assert train_size > 0, 'Train size needs to be greater than 0.'
+
     split_data_dict = {}
 
     df.drop(columns=['fips'],inplace=True)
