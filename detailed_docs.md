@@ -32,13 +32,23 @@ oregon_data_dict = oregon_import()
 * Single County LSTM - modeling data over time by county
 
 #### Preprocessing of Data
-* For functions preparing data for modeling (e.g. train-test split, group shuffle-split, etc.) see `modeling_prep.py`. Example code for use:
+* For functions preparing data for modeling (e.g. train-test split, group shuffle-split, etc.) see `modeling_prep.py`.
+
+Example code for use:
 ```
 from modeling_prep import *
-grouped_train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0, index_col=1)
-split_county_data = county_grouped_shufflesplit(grouped_train_data)
+
+train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0, index_col=1)
+split_county_data = county_grouped_shufflesplit(train_data)
+```
+
+```
+from modeling_prep import *
+
+train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0, index_col=1)
+split_data_dict = train_test_split_default(train_data)
 ```
 
 #### Data Visualizations
 * See `data_exploration.ipynb` for various visualizations.
-* Visualization sections included: drought score histograms, washington county values over time, examination of periodicity in data, histograms, distributions of normalized values
+* Visualization sections include: drought score histograms, washington county values over time, examination of periodicity in data, histograms, distributions of normalized values
