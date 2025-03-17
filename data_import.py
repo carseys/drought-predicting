@@ -172,7 +172,7 @@ def oregon_import(float_32: bool = True):
 
 def single_oregon_county(data_dict: dict, county_code: int):
     """
-    Selects data from county listed in county_code.
+    Selects data from county listed in county_code. Also removes rows at the start that don't form a complete week of data for score value and removes rows at the end for likewise issue.
     
     Parameters
     ----------

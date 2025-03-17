@@ -28,6 +28,14 @@ from data_import import *
 oregon_data_dict = oregon_import()
 ```
 
+For examining one county in particular, use `single_oregon_county`. For this, you need to have a dictionary of DataFrames already, i.e. from `oregon_import()`. Example code for use:
+```
+from data_import import *
+
+oregon_data_dict = oregon_import()
+wa_dict = single_oregon_county(oregon_data_dict, 41067)
+```
+
 ##### Modeling
 * Single County LSTM - modeling data over time by county
 
