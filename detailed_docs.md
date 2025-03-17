@@ -32,7 +32,12 @@ oregon_data_dict = oregon_import()
 * Single County LSTM - modeling data over time by county
 
 #### Preprocessing of Data
-* selecting data for Oregon counties based on `fips` column.
+* For functions preparing data for modeling (e.g. train-test split, group shuffle-split, etc.) see `modeling_prep.py`. Example code for use:
+```
+from modeling_prep import *
+grouped_train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0, index_col=1)
+split_county_data = county_grouped_shufflesplit(grouped_train_data)
+```
 
 #### Data Visualizations
 * See `data_exploration.ipynb` for various visualizations.
