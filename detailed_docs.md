@@ -28,6 +28,8 @@ from data_import import *
 oregon_data_dict = oregon_import()
 ```
 
+In detail, data is imported using Dask DataFrames to handle the size of data. The subset of Oregon counties is selected and the DataFrame is converted to pandas.
+
 ##### Modeling
 * Single County LSTM - modeling data over time by county
 
