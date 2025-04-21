@@ -65,25 +65,6 @@ oregon_data_dict = oregon_import()
 wa_dict = single_oregon_county(oregon_data_dict, 41067)
 ```
 
-#### Preprocessing of Data
-* For functions preparing data for modeling (e.g. train-test split, group shuffle-split, etc.) see `modeling_prep.py`.
-
-Example code for use:
-For train-test split with county as grouping variable:
-```
-from modeling_prep import *
-
-train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0, index_col=1)
-split_county_data = county_grouped_shufflesplit(train_data)
-```
-For train-test split without grouping variable:
-```
-from modeling_prep import *
-
-train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0, index_col=1)
-split_data_dict = train_test_split_default(train_data)
-```
-
 ##### Modeling
 * Single County LSTM - modeling data over time by county
 
