@@ -67,9 +67,10 @@ oregon_data_dict = oregon_import()
 wa_dict = single_oregon_county(oregon_data_dict, 41067)
 ```
 
-| Inputs | Type |  Default Value(s) | Notes |
+| Inputs | Type | Notes | Default Value(s) |
 |----------|----------|----------|----------|
-| data_dict | dictionary | _None_ | Typically take result of `oregon_import` |
+| data_dict | `dict` | Typically take result of `oregon_import` | _None_ |
+| county_code | `int` | FIPS code corresponding to desired county, must be included in each table of the `data_dict` provided | _None_ | 
 
 
 
