@@ -28,6 +28,8 @@ from data_import import *
 oregon_data_dict = oregon_import()
 ```
 
+In detail, data is imported using Dask DataFrames to handle the size of data. The subset of Oregon counties is selected and the DataFrame is converted to pandas.
+
 For examining one county in particular, use `single_oregon_county`. For this, you need to have a dictionary of DataFrames already, i.e. from `oregon_import()`. Example code for use:
 ```
 from data_import import *
@@ -36,7 +38,6 @@ oregon_data_dict = oregon_import()
 wa_dict = single_oregon_county(oregon_data_dict, 41067)
 ```
 
-In detail, data is imported using Dask DataFrames to handle the size of data. The subset of Oregon counties is selected and the DataFrame is converted to pandas.
 
 ### Preprocessing of Data
 For functions preparing data for modeling (e.g. train-test split, group shuffle-split, etc.) see `modeling_prep.py`. Many of these functions rely on a `.csv` datafile, such as the type saved from the Importing Data to Python step above. These `.csv` files are available in the `.\processed_data` directory in this repo. Example code will reference the copies available there.
