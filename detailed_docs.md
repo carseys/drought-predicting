@@ -68,7 +68,7 @@ wa_dict = single_oregon_county(oregon_data_dict, 41067)
 ```
 
 | Inputs | Type |  Default Value(s) | Notes |
-|----------|-------------|----|
+|----------|----------|----------|----------|
 | data_dict | dictionary | _None_ | Typically take result of `oregon_import` |
 
 
