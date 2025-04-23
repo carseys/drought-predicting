@@ -59,7 +59,15 @@ train_data = pd.read_csv('.\processed_data\oregon_train_timeseries.csv',header=0
 split_data_dict = train_test_split_default(train_data)
 ```
 
-For examining one county in particular, use `single_oregon_county`. For this, you need to have a dictionary of DataFrames already, i.e. from `oregon_import()`. Example code for use:
+For examining one county in particular, use `single_oregon_county`. For this, you need to have a dictionary of DataFrames already, i.e. from `oregon_import()`.
+
+Regarding `single_oregon_county`:
+| Inputs | Type | Notes | Default Value(s) |
+|----------|----------|----------|----------|
+| data_dict | `dict` | A dictionary of DataFrames; typically take result of `oregon_import` | _None_ |
+| county_code | `int` | FIPS code corresponding to desired county, must be included in each table of the `data_dict` provided | _None_ | 
+
+Example code for use:
 ```
 from data_import import *
 
@@ -67,10 +75,6 @@ oregon_data_dict = oregon_import()
 wa_dict = single_oregon_county(oregon_data_dict, 41067)
 ```
 
-| Inputs | Type | Notes | Default Value(s) |
-|----------|----------|----------|----------|
-| data_dict | `dict` | Typically take result of `oregon_import` | _None_ |
-| county_code | `int` | FIPS code corresponding to desired county, must be included in each table of the `data_dict` provided | _None_ | 
 
 
 
