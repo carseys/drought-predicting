@@ -4,6 +4,7 @@
 * Data from Kaggle - [Predict Droughts using Weather & Soil Data](https://www.kaggle.com/datasets/cdminix/us-drought-meteorological-data)
 * Note: for size issues, the raw data from Kaggle will not be copied to this repo. Latest download of data from above Kaggle link 4 March 2025.
 * Documentation on US Drought Monitoring can be found [here](https://droughtmonitor.unl.edu/About/AbouttheData/DSCI.aspx).
+* This project is developed entirely in Python.
 * Some visualizations adapted from sample code in this [tutorial on time series forcasting](https://www.tensorflow.org/tutorials/structured_data/time_series).
 
 #### Use
