@@ -24,4 +24,4 @@ oregon_data_dict = oregon_import()
 ```
 * For functions preparing data for modeling (e.g. train-test split, group shuffle-split, etc.) see `modeling_prep.py`.
 
-* For more details see [detailed_docs.md](https://github.com/carseys/drought-predicting/blob/main/detailed_docs.md).
+* For more details see [detailed_docs.md](https://github.com/carseys/drought-predicting/blob/main/detailed_docs.md). Equivalently, the information is available in the [wiki](https://github.com/carseys/drought-predicting/wiki)!
