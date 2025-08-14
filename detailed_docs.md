@@ -7,7 +7,7 @@
 
 ### Importing Data to Python
 
-For importing raw data to python, use `data_import.py`. Note that for this, there should be a directory named `./data` with subdirectories containing the relevant csv files which will be imported.
+For importing raw data to python, use `data_import.py`. Note that for this, there should be a directory named `./data` with subdirectories containing the relevant `.csv` files which will be imported.
 
 Example code for use:
 ```
