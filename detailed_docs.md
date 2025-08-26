@@ -83,6 +83,8 @@ wa_dict = single_oregon_county(oregon_data_dict, 41067)
 #### Single County LSTM - modeling data over time by county
 As a starting point, `single_county_lstm.ipynb` contains an LSTM for modeling prediction of drought score for Washington County, Oregon. This can easily be adapted to a different county but was chosen as an example. An example resulting model from this in the repo is `wa_county_lstm.pt`.
 
+The above mentioned LSTM has been developed using pytorch. A similar LSTM using tf is not yet complete.
+
 ### Data Visualizations
 * See `data_exploration.ipynb` for various visualizations.
 * Visualization sections include: drought score histograms, washington county values over time, examination of periodicity in data, histograms, distributions of normalized values
